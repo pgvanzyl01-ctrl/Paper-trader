@@ -1,0 +1,70 @@
+{
+ "created": "2026-10-27T08:58:03+00:00",
+ "cash": 10000.0,
+ "positions": {},
+ "peak_equity": 10000.0,
+ "halted": false,
+ "halt_reason": "",
+ "last_rebalance": "2026-10-27",
+ "last_run": "2026-10-27",
+ "equity_history": [
+  {
+   "date": "2026-10-27",
+   "equity": 10000.0,
+   "btc": 80147.48
+  }
+ ],
+ "trades": [],
+ "log": [
+  "2026-10-27 08:58Z  binance unavailable (ExchangeNotAvailable)",
+  "2026-10-27 08:58Z  Data source: binanceus, 20 coins",
+  "2026-10-27 08:58Z  Rebalanced. Holding: cash (BTC trend is down or nothing is rising)"
+ ],
+ "last_info": {
+  "regime_ok": true,
+  "ranking": [
+   [
+    "TRX/USDT",
+    -0.0249
+   ],
+   [
+    "BNB/USDT",
+    -0.0278
+   ],
+   [
+    "BTC/USDT",
+    -0.0405
+   ],
+   [
+    "NEAR/USDT",
+    -0.0665
+   ],
+   [
+    "AAVE/USDT",
+    -0.0803
+   ],
+   [
+    "XRP/USDT",
+    -0.1256
+   ],
+   [
+    "ETH/USDT",
+    -0.1362
+   ],
+   [
+    "SOL/USDT",
+    -0.151
+   ],
+   [
+    "AVAX/USDT",
+    -0.1579
+   ],
+   [
+    "ADA/USDT",
+    -0.1624
+   ]
+  ],
+  "targets": []
+ },
+ "source": "binanceus"
+}
