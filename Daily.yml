@@ -1,3 +1,4 @@
+
 name: daily-paper-trade
 
 on:
@@ -15,19 +16,51 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           ref: main
-      - uses: actions/setup-python@v5
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install ccxt pandas numpy
-      - run: python trader.py
-      - name: Save portfolio and dashboard
-        if: always()
+
+      - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
+          pip install ccxt pandas numpy
+
+      - name: Run paper trader
+        run: python trader.py
+
+      - name: Save portfolio and dashboard
+        if: success()
+        run: |
+          set -e
+
           git config user.name "paper-trader"
           git config user.email "paper-trader@users.noreply.github.com"
-          git add state docs
-          git diff --cached --quiet || (git commit -m "Daily paper-trade update" && git push)
+
+          git add state/state.json docs/index.html
+
+          if git diff --cached --quiet; then
+            echo "No portfolio changes to save."
+            exit 0
+          fi
+
+          git commit -m "Daily paper-trade update"
+
+          echo "Fetching latest GitHub changes..."
+          git fetch origin main
+
+          echo "Rebasing onto latest main..."
+          git rebase origin/main
+
+          echo "Saving updated portfolio..."
+          git push origin HEAD:main
+
+          echo "SUCCESS: Portfolio and dashboard saved."
