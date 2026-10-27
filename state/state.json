@@ -18,7 +18,10 @@
  "log": [
   "2026-10-27 08:58Z  binance unavailable (ExchangeNotAvailable)",
   "2026-10-27 08:58Z  Data source: binanceus, 20 coins",
-  "2026-10-27 08:58Z  Rebalanced. Holding: cash (BTC trend is down or nothing is rising)"
+  "2026-10-27 08:58Z  Rebalanced. Holding: cash (BTC trend is down or nothing is rising)",
+  "2026-10-27 10:12Z  binance unavailable (ExchangeNotAvailable)",
+  "2026-10-27 10:12Z  Data source: binanceus, 20 coins",
+  "2026-10-27 10:12Z  Already ran for today, nothing to do."
  ],
  "last_info": {
   "regime_ok": true,
