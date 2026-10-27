@@ -1,8 +1,10 @@
+
 name: daily-paper-trade
 
 on:
   schedule:
     - cron: "15 0 * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -14,18 +16,93 @@ concurrency:
 
 jobs:
   run:
+    name: Run Binance Paper Trader
     runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install ccxt pandas numpy
-      - run: python trader.py
-      - name: Save portfolio and dashboard
-        if: always()
+
+      - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
+          python -m pip install ccxt pandas numpy
+
+      - name: Run paper trading bot
+        run: |
+          echo "Starting Binance paper trader..."
+          python trader.py
+          echo "Paper trader completed."
+
+      - name: Verify generated files
+        run: |
+          test -f state/state.json
+          test -f docs/index.html
+
+          python -m json.tool state/state.json > /dev/null
+
+          echo "Portfolio and dashboard files verified."
+
+      - name: Save portfolio and dashboard
+        if: success()
+        run: |
+          set -euo pipefail
+
           git config user.name "paper-trader"
           git config user.email "paper-trader@users.noreply.github.com"
-          git add state docs
-          git diff --cached --quiet || (git commit -m "Daily paper-trade update" && git push)
+
+          git add state/state.json docs/index.html
+
+          if git diff --cached --quiet; then
+            echo "No portfolio changes to save."
+            exit 0
+          fi
+
+          git commit -m "Daily paper-trade update"
+
+          echo "Fetching latest repository changes..."
+          git fetch origin main
+
+          echo "Rebasing onto latest main..."
+          git rebase origin/main
+
+          echo "Pushing portfolio updates..."
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "SUCCESS: Portfolio saved to GitHub."
+              exit 0
+            fi
+
+            echo "Push attempt $attempt failed."
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "ERROR: Could not save portfolio."
+              exit 1
+            fi
+
+            git fetch origin main
+            git rebase origin/main
+            sleep 3
+          done
+
+      - name: Final status
+        if: success()
+        run: |
+          echo "=================================="
+          echo "BINANCE PAPER TRADER"
+          echo "Status: SUCCESS"
+          echo "Portfolio: SAVED"
+          echo "Dashboard: UPDATED"
+          echo "=================================="
