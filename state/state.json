@@ -5,8 +5,8 @@
  "peak_equity": 10000.0,
  "halted": false,
  "halt_reason": "",
- "last_rebalance": "2026-11-03",
- "last_run": "2026-11-09",
+ "last_rebalance": "2026-11-10",
+ "last_run": "2026-11-10",
  "equity_history": [
   {
    "date": "2026-10-27",
@@ -77,6 +77,11 @@
    "date": "2026-11-09",
    "equity": 10000.0,
    "btc": 74850.23
+  },
+  {
+   "date": "2026-11-10",
+   "equity": 10000.0,
+   "btc": 75371.54
   }
  ],
  "trades": [],
@@ -125,50 +130,53 @@
   "2026-11-08 05:55Z  No rebalance due. Holding.",
   "2026-11-09 06:16Z  binance unavailable (ExchangeNotAvailable)",
   "2026-11-09 06:16Z  Data source: binanceus, 20 coins",
-  "2026-11-09 06:16Z  No rebalance due. Holding."
+  "2026-11-09 06:16Z  No rebalance due. Holding.",
+  "2026-11-10 07:10Z  binance unavailable (ExchangeNotAvailable)",
+  "2026-11-10 07:11Z  Data source: binanceus, 20 coins",
+  "2026-11-10 07:11Z  Rebalanced. Holding: cash (BTC trend is down or nothing is rising)"
  ],
  "last_info": {
-  "regime_ok": true,
+  "regime_ok": false,
   "ranking": [
    [
-    "TRX/USDT",
-    -0.0488
+    "UNI/USDT",
+    0.012
    ],
    [
-    "BTC/USDT",
-    -0.1047
+    "TRX/USDT",
+    -0.037
    ],
    [
     "BNB/USDT",
-    -0.1117
+    -0.0584
+   ],
+   [
+    "BTC/USDT",
+    -0.0797
    ],
    [
     "ETH/USDT",
-    -0.1689
+    -0.1272
    ],
    [
-    "XRP/USDT",
-    -0.1714
-   ],
-   [
-    "LINK/USDT",
-    -0.197
+    "AVAX/USDT",
+    -0.1479
    ],
    [
     "DOGE/USDT",
-    -0.2222
+    -0.1499
    ],
    [
-    "UNI/USDT",
-    -0.2294
-   ],
-   [
-    "DOT/USDT",
-    -0.2323
+    "LINK/USDT",
+    -0.1571
    ],
    [
     "LTC/USDT",
-    -0.2331
+    -0.1593
+   ],
+   [
+    "AAVE/USDT",
+    -0.1656
    ]
   ],
   "targets": []
