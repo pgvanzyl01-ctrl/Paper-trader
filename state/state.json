@@ -6,7 +6,7 @@
  "halted": false,
  "halt_reason": "",
  "last_rebalance": "2026-11-24",
- "last_run": "2026-11-25",
+ "last_run": "2026-11-26",
  "equity_history": [
   {
    "date": "2026-10-27",
@@ -157,13 +157,15 @@
    "date": "2026-11-25",
    "equity": 10000.0,
    "btc": 59829.04
+  },
+  {
+   "date": "2026-11-26",
+   "equity": 10000.0,
+   "btc": 60457.38
   }
  ],
  "trades": [],
  "log": [
-  "2026-11-05 06:38Z  No rebalance due. Holding.",
-  "2026-11-06 06:34Z  binance unavailable (ExchangeNotAvailable)",
-  "2026-11-06 06:34Z  Data source: binanceus, 21 coins",
   "2026-11-06 06:34Z  No rebalance due. Holding.",
   "2026-11-07 05:52Z  binance unavailable (ExchangeNotAvailable)",
   "2026-11-07 05:52Z  Data source: binanceus, 20 coins",
@@ -220,7 +222,10 @@
   "2026-11-24 09:48Z  Rebalanced. Holding: cash (BTC trend is down or nothing is rising)",
   "2026-11-25 08:23Z  binance unavailable (ExchangeNotAvailable)",
   "2026-11-25 08:23Z  Data source: binanceus, 20 coins",
-  "2026-11-25 08:23Z  No rebalance due. Holding."
+  "2026-11-25 08:23Z  No rebalance due. Holding.",
+  "2026-11-26 08:08Z  binance unavailable (ExchangeNotAvailable)",
+  "2026-11-26 08:08Z  Data source: binanceus, 21 coins",
+  "2026-11-26 08:08Z  No rebalance due. Holding."
  ],
  "last_info": {
   "regime_ok": false,
